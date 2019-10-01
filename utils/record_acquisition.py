@@ -21,4 +21,4 @@ def get_year_win_data(year):
 
 
 wins = pd.concat([get_year_win_data(year) for year in years])
-wins.to_csv("wins.csv")
+wins.to_csv("../data/wins.csv",index=False)

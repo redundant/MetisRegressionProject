@@ -12,12 +12,15 @@ def get_team_year_data(team,year):
     url = "https://www.spotrac.com/nfl/{}/positional/{}/active-cap/"
 
     data = pd.read_html(url.format(team,year))[1]
-    data["Team"]=team
+    data["Team"] = team
     data["Cap Dollars"] = data["Cap Dollars"].apply(lambda x: int(x[1:].replace(",","")))
     data = data.pivot(index="Team", columns="Position", values="Cap Dollars")
     data["Year"] = int(year)
 
+    #The pivot removed the team column, so let's throw it back in
+    data["Team"] = team
+
     return data
 
 nfl_data = pd.concat([get_team_year_data(team,year) for team in teams for year in years])
-nfl_data.to_csv("../data/data.csv")
+nfl_data.to_csv("../data/salary_data.csv",index=False)
