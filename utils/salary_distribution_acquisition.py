@@ -20,4 +20,4 @@ def get_team_year_data(team,year):
     return data
 
 nfl_data = pd.concat([get_team_year_data(team,year) for team in teams for year in years])
-nfl_data.to_csv("data.csv")
+nfl_data.to_csv("../data/data.csv")
