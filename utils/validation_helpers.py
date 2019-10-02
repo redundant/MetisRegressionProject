@@ -3,7 +3,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 from sklearn.linear_model import LinearRegression
 
-def split_and_validate_rmse(model, X, y, iterations):
+def split_and_validate_rmse(model, X, y, iterations=30):
     '''Given a model, features, and dependent variable, runs iterations many splits and returns the mean root mean squared error along with the standard deviation
     '''
     rmses = []
