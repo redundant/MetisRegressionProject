@@ -21,4 +21,11 @@ def get_year_win_data(year):
 
 
 wins = pd.concat([get_year_win_data(year) for year in years])
+
+#let's clean up team names.
+
+wins["Team"] = wins["Team"].str.replace("\(.\)","",regex=True)
+wins["Team"] = wins["Team"].str.replace("\[.\]","",regex=True)
+wins["Team"] = wins["Team"].str.strip()
+
 wins.to_csv("../data/wins.csv",index=False)
