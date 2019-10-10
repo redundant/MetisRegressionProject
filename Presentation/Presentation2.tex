@@ -1,0 +1,113 @@
+\documentclass[11pt]{beamer}
+\usetheme{metropolis}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{svg}
+\author{Travis Nell}
+\title{Wins from Finance? An Analysis of NFL Contract Data}
+%\setbeamercovered{transparent} 
+%\setbeamertemplate{navigation symbols}{} 
+%\logo{} 
+%\institute{} 
+\date{October 11, 2019} 
+%\subject{} 
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Question}
+
+\begin{itemize}
+
+\item Can how an NFL team spends its money meaningfully predict its success?
+
+\item Which positions give the greatest return on investment?
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Data}
+
+\begin{itemize}
+
+\item Scraped from spotrac.com
+
+\item Salaries for each position group for all 32 teams
+
+\item Injured reserve, active salaries, and dead cap 
+
+\item Entirety of the current Collective Bargaining Agreement
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Methodology}
+
+\begin{itemize}
+
+\item A 60-20-20 train, validate, and test split
+
+\item Lasso model with parameter found from the validation set.
+
+
+\item Final model trained on train and validate, then tested
+
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Linear Model Insights}
+
+\begin{enumerate}
+
+\item Active Contracts
+
+\item Injured Reserve
+
+\item Dead Cap
+
+\item Defensive Line
+
+\item Quarterback
+
+\item Special Teams
+
+\item Offensive Line
+
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}{Error Metrics}
+
+\begin{itemize}
+
+\item Training RMSE of $2.404$
+
+\item Testing RMSE $2.843$
+
+\item Around $0.4$ difference in error over a $16$ game season
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Residuals}
+
+\begin{figure}
+
+\includesvg[scale=.75]{residuals}
+
+\end{figure}
+
+
+\end{frame}
+
+\end{document}
